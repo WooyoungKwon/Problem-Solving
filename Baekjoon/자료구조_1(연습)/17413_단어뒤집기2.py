@@ -1,7 +1,6 @@
 import sys
 
-# bar = sys.stdin.readline().rstrip()
-bar = "(((()(()()))(())()))(()())"
+bar = sys.stdin.readline().rstrip()
 stack = []
 ans = 0
 
@@ -12,7 +11,6 @@ for i in range(len(bar)):
         if bar[i-1] == "(":
             stack.pop()
             ans += len(stack)
-            print(stack)
         else:
             stack.pop()
             ans += 1
