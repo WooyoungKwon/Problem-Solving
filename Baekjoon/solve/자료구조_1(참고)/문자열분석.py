@@ -1,19 +1,25 @@
 import sys
 
-for _ in range(4):
-    S = list(input())
-    # S = list(sys.stdin.readline())
-    # S = list("0L1A2S3T4L5I6N7E8")
-    count = [0 for _ in range(4)]
+S = list(sys.stdin.readline().rstrip())
+rot13 = ''
 
-    while S:
-        asc = ord(S.pop())
-        if 96 < asc < 123:
-            count[0] += 1
-        elif 64 < asc < 91:
-            count[1] += 1
-        elif asc == 32:
-            count[3] += 1
-        else:
-            count[2] += 1
-    print(*count)
+for i in range(len(S)):
+    asc = ord(S[i])
+    # 대문자일 경우
+    if 64 < asc < 91:
+        rotNum = asc + 13
+        # 만약 90를 넘어가면 넘어간만큼 64부터 다시 카운트
+        if rotNum > 90:
+            rotNum = 64 + (rotNum - 90)
+        rot13 += chr(rotNum)
+
+    # 소문자일 경우
+    elif 96 < asc < 123:
+        rotNum = asc + 13
+        # 만약 122를 넘어가면 넘어간만큼 96부터 다시 카운트
+        if rotNum > 122:
+            rotNum = 96 + (rotNum - 122)
+        rot13 += chr(rotNum)
+    else:
+        rot13 += S[i]
+print(rot13)
