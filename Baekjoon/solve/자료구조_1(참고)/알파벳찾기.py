@@ -7,7 +7,6 @@ L = len(S)
 
 for i in range(L):
     idx = ord(S[i]) - 97
-    print(idx)
     if count[idx] == -1:
         count[idx] += i+1
 
