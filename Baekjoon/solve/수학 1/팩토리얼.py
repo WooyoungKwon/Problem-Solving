@@ -7,20 +7,6 @@ def fac(n):
     else:
         return n * fac(n-1)
 
-def countZero(n):
-    n = str(n)
-    cnt = 0
-    for i in range(len(n)-1, 0, -1):
-        if n[i] != '0':
-            break
-        elif n[i] == '0':
-            cnt += 1
-    return cnt
+N = int(sys.stdin.readline())
 
-
-def comb(n, r):
-    return fac(n) / fac(r) * (fac(n-r))
-
-n, r = map(int, sys.stdin.readline().split())
-
-print(countZero(comb(n, r)))
+print(fac(N))
